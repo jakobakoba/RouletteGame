@@ -1,4 +1,4 @@
-package com.example.roulettegame
+package com.bor96dev.roulettegame
 
 import org.junit.Test
 

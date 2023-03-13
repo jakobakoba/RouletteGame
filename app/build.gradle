@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.roulettegame'
+    namespace 'com.bor96dev.roulettegame'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.roulettegame"
+        applicationId "com.bor96dev.roulettegame"
         minSdk 24
         targetSdk 33
         versionCode 1

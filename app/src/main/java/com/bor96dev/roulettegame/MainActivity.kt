@@ -1,4 +1,4 @@
-package com.example.roulettegame
+package com.bor96dev.roulettegame
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
-import com.example.roulettegame.rule_screen.RuleScreen
-import com.example.roulettegame.ui.theme.RouletteGameTheme
-import com.example.roulettegame.ui.theme.roulettebackground
+import com.bor96dev.roulettegame.rule_screen.RuleScreen
+import com.bor96dev.roulettegame.ui.theme.RouletteGameTheme
+import com.bor96dev.roulettegame.ui.theme.roulettebackground
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: RuleViewModel

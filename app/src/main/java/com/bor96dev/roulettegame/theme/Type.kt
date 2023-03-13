@@ -1,4 +1,4 @@
-package com.example.roulettegame.ui.theme
+package com.bor96dev.roulettegame.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

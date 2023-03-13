@@ -1,4 +1,4 @@
-package com.example.roulettegame.utils
+package com.bor96dev.roulettegame.utils
 
 object NumberUtil {
     val list = listOf(

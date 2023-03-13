@@ -1,4 +1,4 @@
-package com.example.roulettegame.rule_screen
+package com.bor96dev.roulettegame.rule_screen
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -14,9 +14,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.roulettegame.R
-import com.example.roulettegame.RuleViewModel
-import com.example.roulettegame.utils.NumberUtil
+import com.bor96dev.roulettegame.R
+import com.bor96dev.roulettegame.RuleViewModel
+import com.bor96dev.roulettegame.utils.NumberUtil
 import kotlin.math.roundToInt
 
 
