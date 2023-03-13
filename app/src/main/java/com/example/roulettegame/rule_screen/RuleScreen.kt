@@ -15,19 +15,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roulettegame.R
+import com.example.roulettegame.RuleViewModel
 import com.example.roulettegame.utils.NumberUtil
 import kotlin.math.roundToInt
 
 
 @Composable
-fun RuleScreen() {
+fun RuleScreen(viewModel: RuleViewModel) {
 
     var rotationValue by remember {
-        mutableStateOf(0f)
+        mutableStateOf(viewModel.rotationValue)
     }
 
     var number by remember {
-        mutableStateOf(0)
+        mutableStateOf(viewModel.number)
     }
     val angle: Float by animateFloatAsState(
         targetValue = rotationValue,
@@ -37,6 +38,7 @@ fun RuleScreen() {
         finishedListener = {
             val index = (360f - (it % 360)) / (360f / NumberUtil.list.size)
             number = NumberUtil.list[index.roundToInt()]
+            viewModel.number = number
 
         }
 
