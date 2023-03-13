@@ -92,7 +92,7 @@ fun RuleScreen(viewModel: RuleViewModel) {
 
         ) {
             Text(
-                text = "Start",
+                text = "Spin the wheel",
                 color = Color.White,
                 fontSize = 30.sp
 
