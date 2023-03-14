@@ -39,6 +39,7 @@ fun RuleScreen(viewModel: RuleViewModel) {
             val index = (360f - (it % 360)) / (360f / NumberUtil.list.size)
             number = NumberUtil.list[index.roundToInt()]
             viewModel.number = number
+            viewModel.rotationValue = rotationValue
 
         }
 
