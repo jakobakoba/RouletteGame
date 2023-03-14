@@ -1,5 +1,7 @@
 package com.bor96dev.roulettegame.rule_screen
 
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -10,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,7 +25,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun RuleScreen(viewModel: RuleViewModel) {
-
+    val context = LocalContext.current
     var rotationValue by remember {
         mutableStateOf(viewModel.rotationValue)
     }
@@ -30,20 +33,33 @@ fun RuleScreen(viewModel: RuleViewModel) {
     var number by remember {
         mutableStateOf(viewModel.number)
     }
+
+    var mediaPlayer by remember {
+        mutableStateOf(MediaPlayer())
+    }
+    DisposableEffect(Unit) {
+        onDispose {
+            mediaPlayer.release()
+        }
+    }
+
     val angle: Float by animateFloatAsState(
         targetValue = rotationValue,
         animationSpec = tween(
-            durationMillis = 4000
+            durationMillis = 4000,
         ),
         finishedListener = {
+
+            mediaPlayer.stop()
             val index = (360f - (it % 360)) / (360f / NumberUtil.list.size)
             number = NumberUtil.list[index.roundToInt()]
             viewModel.number = number
             viewModel.rotationValue = rotationValue
 
-        }
+        },
 
-    )
+
+        )
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -82,6 +98,15 @@ fun RuleScreen(viewModel: RuleViewModel) {
         }
         androidx.compose.material.Button(
             onClick = {
+
+                mediaPlayer.release()
+                mediaPlayer = MediaPlayer.create(context, R.raw.sound).apply {
+                    setAudioAttributes(
+                        AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                            .build()
+                    )
+                }
+                mediaPlayer.start()
                 rotationValue = (720..1080).random().toFloat() + angle
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
@@ -101,5 +126,6 @@ fun RuleScreen(viewModel: RuleViewModel) {
         }
 
     }
+
 
 }
