@@ -8,5 +8,7 @@
 
 ___
 
-![screen1.jpg](https://github.com/jakobakoba/RouletteGame/blob/main/screen1.jpg)
-![screen2.jpg](https://github.com/jakobakoba/RouletteGame/blob/main/screen2.jpg)
+<div style="display: flex; flex-wrap: wrap;">
+  <img src="https://github.com/jakobakoba/RouletteGame/blob/main/screen1.jpg" width="400" />
+  <img src="https://github.com/jakobakoba/RouletteGame/blob/main/screen2.jpg" width="400" />
+</div>
