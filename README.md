@@ -4,7 +4,7 @@
  
  ___
 
-** Ссылка на приложение в Google Play: ** [Roulette Spin Simulator](https://play.google.com/store/apps/details?id=com.bor96dev.roulettegame)
+**Ссылка на приложение в Google Play**: [Roulette Spin Simulator](https://play.google.com/store/apps/details?id=com.bor96dev.roulettegame)
 
 ___
 
