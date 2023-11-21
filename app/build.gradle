@@ -11,8 +11,8 @@ android {
         applicationId "com.bor96dev.roulettegame"
         minSdk 24
         targetSdk 33
-        versionCode 3
-        versionName "3.0"
+        versionCode 6
+        versionName "6.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -60,4 +60,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+
 }
