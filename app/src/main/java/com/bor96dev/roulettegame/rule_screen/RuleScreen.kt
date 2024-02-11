@@ -37,33 +37,31 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.bor96dev.roulettegame.R
 import com.bor96dev.roulettegame.RuleViewModel
 import com.bor96dev.roulettegame.utils.NumberUtil
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.my.target.ads.MyTargetView
+import com.my.target.common.models.IAdLoadingError
 import kotlin.math.roundToInt
 
-fun showInterstitialAd(activity: Activity) {
-    InterstitialAd.load(
-        activity.applicationContext,
-        "ca-app-pub-5225934313122408/5412804310",
-        AdRequest.Builder().build(),
-        object: InterstitialAdLoadCallback(){
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-            }
-
-            override fun onAdLoaded(p0: InterstitialAd) {
-                p0.show(activity)
-            }
-        }
-    )
-}
+//fun showInterstitialAd(activity: Activity) {
+//    InterstitialAd.load(
+//        activity.applicationContext,
+//        "ca-app-pub-5225934313122408/5412804310",
+//        AdRequest.Builder().build(),
+//        object: InterstitialAdLoadCallback(){
+//            override fun onAdFailedToLoad(p0: LoadAdError) {
+//            }
+//
+//            override fun onAdLoaded(p0: InterstitialAd) {
+//                p0.show(activity)
+//            }
+//        }
+//    )
+//}
 
 
 @Composable
 fun RuleScreen(viewModel: RuleViewModel, activity: Activity) {
+
+    lateinit var adView: MyTargetView
 
     val context = LocalContext.current
     var rotationValue by remember {
@@ -77,6 +75,7 @@ fun RuleScreen(viewModel: RuleViewModel, activity: Activity) {
     var mediaPlayer by remember {
         mutableStateOf(MediaPlayer())
     }
+
     DisposableEffect(Unit) {
         onDispose {
             mediaPlayer.release()
@@ -106,7 +105,33 @@ fun RuleScreen(viewModel: RuleViewModel, activity: Activity) {
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        AdmobBanner(modifier = Modifier.fillMaxWidth())
+//        AdmobBanner(modifier = Modifier.fillMaxWidth())
+        val slotId = 1503885
+        adView = MyTargetView(context)
+        adView.setSlotId(slotId)
+        adView.setAdSize(MyTargetView.AdSize.ADSIZE_320x50)
+
+        AndroidView(
+            factory = { adView },
+            modifier = Modifier.fillMaxWidth().height(50.dp),
+            update = {
+                it.listener = object : MyTargetView.MyTargetViewListener {
+                    override fun onLoad(p0: MyTargetView) {
+                    }
+
+                    override fun onNoAd(p0: IAdLoadingError, p1: MyTargetView) {
+                    }
+
+                    override fun onShow(p0: MyTargetView) {
+                    }
+
+                    override fun onClick(p0: MyTargetView) {
+                    }
+                }
+                it.load()
+            }
+        )
+
         Text(
             text = number.toString(),
             fontWeight = FontWeight.Bold,
@@ -140,14 +165,14 @@ fun RuleScreen(viewModel: RuleViewModel, activity: Activity) {
         }
         androidx.compose.material.Button(
             onClick = {
-                viewModel.showAdCounter++
-
-                if (viewModel.showAdCounter == 8){
-                    viewModel.showAdCounter = 0
-                    showInterstitialAd(activity = activity)
-                }
-
-
+//                viewModel.showAdCounter++
+//
+//                if (viewModel.showAdCounter == 8){
+//                    viewModel.showAdCounter = 0
+//                    showInterstitialAd(activity = activity)
+//                }
+//
+//
 
 
                 mediaPlayer.release()
@@ -177,26 +202,23 @@ fun RuleScreen(viewModel: RuleViewModel, activity: Activity) {
         }
 
 
-
     }
 
 
 }
 
 
-
-
-@Composable
-fun AdmobBanner(modifier: Modifier = Modifier) {
-    AndroidView(
-        modifier = Modifier.fillMaxWidth(),
-        factory = {context ->
-            AdView(context).apply{
-                setAdSize(AdSize.FULL_BANNER)
-
-                adUnitId = "ca-app-pub-5225934313122408/1481868987"
-
-                loadAd(AdRequest.Builder().build())
-            }
-        })
-}
+//@Composable
+//fun AdmobBanner(modifier: Modifier = Modifier) {
+//    AndroidView(
+//        modifier = Modifier.fillMaxWidth(),
+//        factory = {context ->
+//            AdView(context).apply{
+//                setAdSize(AdSize.FULL_BANNER)
+//
+//                adUnitId = "ca-app-pub-5225934313122408/1481868987"
+//
+//                loadAd(AdRequest.Builder().build())
+//            }
+//        })
+//}

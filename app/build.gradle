@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.bor96dev.roulettegame'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.bor96dev.roulettegame"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 6
         versionName "6.0"
 
@@ -50,8 +50,8 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    implementation "androidx.compose.ui:ui:1.3.3"
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
     implementation 'androidx.compose.material:material:1.2.0'
     testImplementation 'junit:junit:4.13.2'
@@ -61,6 +61,9 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
-    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+//    implementation "ru.rustore.sdk:review:0.1.6"
+//    implementation "com.my.target:mytarget-sdk:5.16.5"
+    implementation 'com.my.target:mytarget-sdk:5.20.0'
+
 
 }

@@ -10,13 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bor96dev.roulettegame.rule_screen.RuleScreen
 import com.bor96dev.roulettegame.ui.theme.RouletteGameTheme
 import com.bor96dev.roulettegame.ui.theme.roulettebackground
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.RequestConfiguration
-import com.google.android.gms.ads.interstitial.InterstitialAd
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: RuleViewModel
-    private var mInterstitialAd: InterstitialAd? = null
+//    private var mInterstitialAd: InterstitialAd? = null
     private final var TAG = "MainActivity"
 
 
@@ -34,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        MobileAds.initialize(this) {}
+//        MobileAds.initialize(this) {}
 
 
     }
